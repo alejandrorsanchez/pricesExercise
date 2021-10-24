@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.daos.PriceDao;
+import com.example.demo.entities.BrandEntity;
 import com.example.demo.entities.PriceEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,8 @@ public class PriceService {
     }
 
     public PriceEntity findByDateAndProductIdAndBrandId(LocalDateTime date, int productId, int brandId) {
-        return this.priceDao.findByStartDateLessThanAndEndDateGreaterThanAndProductIdAndBrandIdOrderByPriorityDesc(date, date, productId, brandId)
+        BrandEntity brandEntity = new BrandEntity(1, "ZARA");
+        return this.priceDao.findByStartDateLessThanAndEndDateGreaterThanAndProductIdAndBrandIdOrderByPriorityDesc(date, date, productId, brandEntity)
                 .stream()
                 .findFirst()
                 .orElseThrow();
