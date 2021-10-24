@@ -18,8 +18,8 @@ public class PriceService {
         this.priceDao = priceDao;
     }
 
-    public PriceEntity findByDateAndProductIdAndBrandId(LocalDateTime date, int productId, int brand) {
-        return this.priceDao.findByStartDateLessThanAndEndDateGreaterThanAndProductIdAndBrandOrderByPriorityDesc(date, date, productId, brand)
+    public PriceEntity findByDateAndProductIdAndBrandId(LocalDateTime date, int productId, int brandId) {
+        return this.priceDao.findByStartDateLessThanAndEndDateGreaterThanAndProductIdAndBrandIdOrderByPriorityDesc(date, date, productId, brandId)
                 .stream()
                 .findFirst()
                 .orElseThrow();

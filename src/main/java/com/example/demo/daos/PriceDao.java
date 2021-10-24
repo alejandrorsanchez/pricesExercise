@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface PriceDao extends JpaRepository<PriceEntity, Integer > {
 
-    List<PriceEntity> findByStartDateLessThanAndEndDateGreaterThanAndProductIdAndBrandOrderByPriorityDesc(LocalDateTime date, LocalDateTime date1, int productId, int brand);
+    List<PriceEntity> findByStartDateLessThanAndEndDateGreaterThanAndProductIdAndBrandIdOrderByPriorityDesc(LocalDateTime date, LocalDateTime date1, int productId, int brandId);
 }
