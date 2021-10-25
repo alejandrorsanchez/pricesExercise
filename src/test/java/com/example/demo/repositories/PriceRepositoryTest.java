@@ -29,7 +29,7 @@ public class PriceRepositoryTest {
     @Test
     void testVerification(){
         Optional<PriceEntity> priceEntity = this.priceRepository.findById(0);
-        //System.out.println(priceEntity);
+        System.out.println(priceEntity);
         assertEquals(35.5, priceEntity.orElseThrow().getPrice());
     }
 }
