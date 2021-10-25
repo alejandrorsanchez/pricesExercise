@@ -8,23 +8,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 @SpringBootTest
 public class PriceRepositoryTest {
 
     @Autowired
     private PriceRepository priceRepository;
-
-    @Test
-    void testVerification(){
-        Optional<PriceEntity> priceEntity = this.priceRepository.findById(0);
-        System.out.println(priceEntity);
-        assertEquals(35.5, priceEntity.orElseThrow().getPrice());
-    }
 
     @Test
     void testFindByStartDateLessThanAndEndDateGreaterThanAndProductIdAndBrandIdOrderByPriorityDesc1(){
