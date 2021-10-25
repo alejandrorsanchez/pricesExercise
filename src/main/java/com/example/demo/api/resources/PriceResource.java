@@ -29,7 +29,6 @@ public class PriceResource {
     public PriceDto findByDateAndProductIdAndBrandId(@RequestParam(required = true) LocalDateTime date,
                                                      @RequestParam(required = true) int productId,
                                                      @RequestParam(required = true) int brandId){
-        return this.priceService.findByDateAndProductIdAndBrandId(date, productId, brandId)
-                .toPriceDto();
+        return this.priceService.findByDateAndProductIdAndBrandId(date, productId, brandId);
     }
 }

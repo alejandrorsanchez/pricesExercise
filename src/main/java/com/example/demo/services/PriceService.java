@@ -1,29 +1,28 @@
 package com.example.demo.services;
 
-import com.example.demo.daos.PriceDao;
+import com.example.demo.api.dtos.PriceDto;
+import com.example.demo.repositories.PriceRepository;
 import com.example.demo.entities.BrandEntity;
-import com.example.demo.entities.PriceEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Service
 public class PriceService {
 
-    private PriceDao priceDao;
+    private PriceRepository priceRepository;
+    private BrandService brandService;
 
     @Autowired
-    public PriceService(PriceDao priceDao) {
-        this.priceDao = priceDao;
+    public PriceService(PriceRepository priceRepository, BrandService brandService) {
+        this.priceRepository = priceRepository;
+        this.brandService = brandService;
     }
 
-    public PriceEntity findByDateAndProductIdAndBrandId(LocalDateTime date, int productId, int brandId) {
-        BrandEntity brandEntity = new BrandEntity(1, "ZARA");
-        return this.priceDao.findByStartDateLessThanAndEndDateGreaterThanAndProductIdAndBrandIdOrderByPriorityDesc(date, date, productId, brandEntity)
-                .stream()
-                .findFirst()
-                .orElseThrow();
+    public PriceDto findByDateAndProductIdAndBrandId(LocalDateTime date, int productId, int brandId) {
+        BrandEntity brandEntity = this.brandService.findById(brandId);
+        return this.priceRepository.findFirstByStartDateLessThanAndEndDateGreaterThanAndProductIdAndBrandIdOrderByPriorityDesc(date, date, productId, brandEntity)
+                .toPriceDto();
     }
 }
