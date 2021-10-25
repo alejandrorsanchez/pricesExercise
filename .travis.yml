@@ -10,6 +10,6 @@ notifications:
       - aleeexr7@gmail.com
 script:
   - mvn org.jacoco:jacoco-maven-plugin:prepare-agent verify
-  - mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=alejandrorsanchez
+  - mvn sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=alejandrorsanchez
     -Dsonar.login=$SONAR
 
