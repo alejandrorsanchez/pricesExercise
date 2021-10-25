@@ -22,7 +22,7 @@ public class PriceService {
 
     public PriceDto findByDateAndProductIdAndBrandId(LocalDateTime date, int productId, int brandId) {
         BrandEntity brandEntity = this.brandService.findById(brandId);
-        return this.priceRepository.findFirstByStartDateLessThanAndEndDateGreaterThanAndProductIdAndBrandIdOrderByPriorityDesc(date, date, productId, brandEntity)
+        return this.priceRepository.findFirstByStartDateLessThanAndEndDateGreaterThanAndProductIdAndBrandOrderByPriorityDesc(date, date, productId, brandEntity)
                 .toPriceDto();
     }
 }

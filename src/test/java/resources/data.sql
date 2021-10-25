@@ -8,7 +8,7 @@ CREATE TABLE Brand (
 
 CREATE TABLE Price (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  brand_id INT NOT NULL,
+  brand INT NOT NULL,
   start_date DATETIME NOT NULL,
   end_date DATETIME NOT NULL,
   price_list INT NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE Price (
   priority INT NOT NULL,
   price DOUBLE NOT NULL,
   currency VARCHAR(3) NOT NULL,
-  FOREIGN KEY(brand_id) REFERENCES Brand(id)
+  FOREIGN KEY(brand) REFERENCES Brand(id)
 );
 
 INSERT INTO Brand VALUES

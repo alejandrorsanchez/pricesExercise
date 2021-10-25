@@ -22,7 +22,7 @@ public class PriceRepositoryTest {
     void testFindByStartDateLessThanAndEndDateGreaterThanAndProductIdAndBrandIdOrderByPriorityDesc(){
         LocalDateTime date = LocalDateTime.of(2020, Month.JUNE, 14, 10, 00, 00);
         BrandEntity brandEntity = new BrandEntity(1, "ZARA");
-        PriceEntity priceEntity = this.priceRepository.findFirstByStartDateLessThanAndEndDateGreaterThanAndProductIdAndBrandIdOrderByPriorityDesc(date, date,35455,brandEntity);
+        PriceEntity priceEntity = this.priceRepository.findFirstByStartDateLessThanAndEndDateGreaterThanAndProductIdAndBrandOrderByPriorityDesc(date, date,35455,brandEntity);
         assertEquals(35.5, priceEntity.getPrice());
     }
 

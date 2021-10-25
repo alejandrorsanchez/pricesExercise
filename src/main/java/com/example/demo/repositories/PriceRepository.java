@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface PriceRepository extends JpaRepository<PriceEntity, Integer > {
 
-    PriceEntity findFirstByStartDateLessThanAndEndDateGreaterThanAndProductIdAndBrandIdOrderByPriorityDesc(LocalDateTime date, LocalDateTime date1, int productId, BrandEntity brandEntity);
+    PriceEntity findFirstByStartDateLessThanAndEndDateGreaterThanAndProductIdAndBrandOrderByPriorityDesc(LocalDateTime date, LocalDateTime date1, int productId, BrandEntity brandEntity);
 }

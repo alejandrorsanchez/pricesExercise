@@ -22,7 +22,7 @@ public class PriceEntity {
     @GeneratedValue
     private int id;
     @ManyToOne //@JoinColumn
-    private BrandEntity brandEntity;
+    private BrandEntity brand;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private int priceList;
@@ -34,7 +34,7 @@ public class PriceEntity {
     public PriceDto toPriceDto(){
         PriceDto priceDto = new PriceDto();
         priceDto.setProductId(this.productId);
-        priceDto.setBrandId(this.brandEntity.getId());
+        priceDto.setBrandId(this.brand.getId());
         priceDto.setPriceList(this.priceList);
         priceDto.setStartDate(this.startDate);
         priceDto.setEndDate(this.endDate);
